@@ -1,0 +1,37 @@
+@import '../styles/global.css';
+
+.header {
+    margin-top: 20px;
+    padding-right: 10px;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--color-black);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-profile--container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.profile-dropdown--icon {
+    border-width: 1.5px;
+    border-radius: 1px;
+}
