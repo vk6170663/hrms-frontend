@@ -14,7 +14,7 @@ let csrfToken: string | null = null;
 
 const fetchCsrfToken = async () => {
     if (!csrfToken) {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1'}/auth/csrf-token`, {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || import.meta.env.VITE_API_LOCAL_URL || 'http://localhost:5000/api/v1'}/auth/csrf-token`, {
             withCredentials: true,
         });
         csrfToken = data.csrfToken;
