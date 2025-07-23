@@ -6,7 +6,7 @@ import { NavSection } from "./NavSection";
 import Logo from "./logo";
 import { Link } from "react-router-dom";
 
-export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, onItemClick, className = "" }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, className = "" }) => {
     const { isOpen, closeSidebar } = useSidebar();
 
     return (
@@ -26,8 +26,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, onItemClic
                             key={section.id}
                             section={section}
                             onItemClick={(item) => {
-                                if (item.onClick) {
-                                    item.onClick();
+                                if (item.onClick && typeof item.onClick === "function") {
+                                    console.log("Executing item.onClick for:", item.label);
+                                    // Handle both signatures
+                                    if (item.onClick.length === 0) {
+                                        item.onClick(item);
+                                    } else {
+                                        item.onClick(item);
+                                    }
                                 }
                             }}
                         />

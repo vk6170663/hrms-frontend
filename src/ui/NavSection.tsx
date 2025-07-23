@@ -16,7 +16,13 @@ export const NavSection: React.FC<NavSectionProps> = ({ section, onItemClick }) 
                     <NavItem
                         key={item.id}
                         {...item}
-                        onClick={onItemClick || item.onClick}
+                        onClick={(itemProp) => {
+                            if (item.onClick && typeof item.onClick === "function") {
+                                item.onClick(item);
+                            } else if (onItemClick) {
+                                onItemClick(itemProp);
+                            }
+                        }}
                     />
                 ))}
             </ul>

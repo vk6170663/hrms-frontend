@@ -5,7 +5,7 @@ type ButtonType = 'default' | 'default-md' | 'sign-up' | 'login' | 'password-tog
 
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     buttonType?: ButtonType;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     containerClass?: string;
     disabled?: boolean;
     children: ReactNode;
@@ -38,19 +38,11 @@ const Button: FC<ButtonProps> = ({
             break;
     }
 
-    const onButtonClick = () => {
-        try {
-            onClick();
-        } catch (error) {
-            console.error('Button onClick error:', error);
-        }
-    };
-
     return (
         <button
             type={type}
             className={`${style} ${containerClass}`}
-            onClick={onButtonClick}
+            onClick={onClick}
             disabled={disabled}
             {...props}
         >

@@ -1,11 +1,9 @@
-import type React from "react";
-
 export interface NavItemType {
     id: string;
     label: string;
     icon?: React.ReactNode;
     href?: string;
-    onClick?: (item: NavItemType) => void;
+    onClick?: ((item: NavItemType) => void);
     active?: boolean;
 }
 
@@ -18,7 +16,7 @@ export interface NavSection {
 export interface SidebarProps {
     sections: NavSection[];
     onSearch?: (query: string) => void;
-    onItemClick?: (item: NavItemType) => void;
+    onItemClick?: ((item: NavItemType) => void) | (() => void);
     className?: string;
 }
 

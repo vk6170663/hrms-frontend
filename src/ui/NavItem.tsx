@@ -9,13 +9,16 @@ interface NavItemProps extends NavItemType {
 
 const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, active, ...props }) => {
     const handleClick = (e: React.MouseEvent) => {
-        if (onClick) {
+        if (e && onClick) {
             e.preventDefault();
             onClick({ id, label, icon, href, onClick, active });
         }
     };
 
-    console.log(onClick);
+    const buttonOnClick = () => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        handleClick(new MouseEvent("click") as any);
+    };
 
     return (
         <li className="nav-item">
@@ -30,7 +33,7 @@ const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, activ
                         {icon && <span className="nav-icon">{icon}</span>}
                         <span className="nav-label">{label}</span>
                     </Link> :
-                    <Button buttonType="default-md" containerClass={`nav-link ${active ? "active" : ""}`} onClick={handleClick}>
+                    <Button buttonType="default-md" containerClass={`nav-link ${active ? "active" : ""}`} onClick={buttonOnClick}>
                         {icon && <span className="nav-icon">{icon}</span>}
                         <span className="nav-label">{label}</span>
                     </Button>
