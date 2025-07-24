@@ -11,6 +11,7 @@ const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, activ
     const handleClick = (e: React.MouseEvent) => {
         if (e && onClick) {
             e.preventDefault();
+            e.stopPropagation();
             onClick({ id, label, icon, href, onClick, active });
         }
     };

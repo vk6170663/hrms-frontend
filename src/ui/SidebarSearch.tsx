@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Input from "./input";
 
 interface SidebarSearchProps {
     onSearch?: (query: string) => void;
@@ -20,9 +21,9 @@ const SidebarSearch: React.FC<SidebarSearchProps> = ({ onSearch, placeholder = "
                 <svg className="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                <input
+                <Input
                     type="text"
-                    className="search-input"
+                    containerClass="search-input"
                     placeholder={placeholder}
                     value={query}
                     onChange={handleChange}

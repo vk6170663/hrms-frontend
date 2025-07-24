@@ -18,7 +18,7 @@ export const NavSection: React.FC<NavSectionProps> = ({ section, onItemClick }) 
                         {...item}
                         onClick={(itemProp) => {
                             if (item.onClick && typeof item.onClick === "function") {
-                                item.onClick(item);
+                                item.onClick();
                             } else if (onItemClick) {
                                 onItemClick(itemProp);
                             }

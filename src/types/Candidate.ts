@@ -7,5 +7,5 @@ export interface Candidate {
   department: string;
   experience: string;
   status: string;
-  resume: string;
+  resume: File | string;
 }

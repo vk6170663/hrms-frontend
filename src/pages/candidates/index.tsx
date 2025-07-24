@@ -1,9 +1,9 @@
-const Candidates = () => {
-    return (
-        <div>
+import CandidatesTable from "../../ui/candidate";
 
-        </div>
+const CandidatesPage = () => {
+    return (
+        <CandidatesTable />
     );
 };
 
-export default Candidates;
+export default CandidatesPage;

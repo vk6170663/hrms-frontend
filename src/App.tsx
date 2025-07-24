@@ -6,12 +6,13 @@ import { useAuthStore } from './store/auth';
 import ProtectedRoute from './ui/ProtectedRoute';
 import Login from './pages/login';
 import Signup from './pages/signup';
-import Candidates from './pages/candidates';
 import Employees from './pages/employees';
 import Attendance from './pages/attendance';
 import Leaves from './pages/leaves';
 import AppLayout from './ui/AppLayout';
 import ErrorBoundary from './ui/ErrorBoundary';
+import CandidatesPage from './pages/candidates';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -55,7 +56,7 @@ function App() {
             }
           >
             <Route index element={<Navigate to="candidates" replace />} />
-            <Route path="candidates" element={<Candidates />} />
+            <Route path="candidates" element={<CandidatesPage />} />
             <Route path="employees" element={<Employees />} />
             <Route path="attendance" element={<Attendance />} />
             <Route path="leaves" element={<Leaves />} />
@@ -68,6 +69,27 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
+
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "var(--color-grey)",
+            color: "var(--color-dark-grey)",
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }

@@ -123,3 +123,74 @@
 .logout-hidden {
     display: none;
 }
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: sans-serif;
+}
+
+.dropdown-btn {
+    padding: 7px 16px;
+    border-radius: 45px;
+    border: 1px solid var(--color-violet);
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+/* Arrow style */
+.arrow {
+    font-size: 12px;
+}
+
+/* Dropdown list */
+.dropdown-list {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px #0000006b;
+    z-index: 10;
+    padding: 10px 0;
+}
+
+.dropdown-list li {
+    list-style: none;
+}
+
+.dropdown-option {
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dropdown-option:hover {
+    background-color: #f0f0f0;
+}
+
+/* Status-specific styles */
+.scheduled {
+    color: var(--color-yellow);
+}
+
+.ongoing {
+    color: var(--color-green);
+}
+
+.selected {
+    color: var(--color-violet);
+}
+
+.rejected {
+    color: var(--color-red);
+
+}

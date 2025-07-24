@@ -49,8 +49,7 @@ body {
 }
 
 .default-btn,
-.default-btn:focus,
-.default-btn:hover {
+.default-btn:focus {
   border: none;
   background: none;
   cursor: pointer;

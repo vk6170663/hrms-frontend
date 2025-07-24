@@ -15,7 +15,7 @@ const Input: FC<InputTypeProps> = ({ placeholder = "", containerClass = "", type
         <input
             type={type}
             value={value}
-            className={`${containerClass} form-input`}
+            className={`${containerClass}`}
             placeholder={placeholder}
             disabled={disabled}
             onChange={onChange}

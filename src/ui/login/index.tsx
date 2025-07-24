@@ -63,6 +63,7 @@ const LoginForm = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
                             disabled={isLoading}
+                            containerClass="form-input"
                         />
                     </div>
 
@@ -77,11 +78,13 @@ const LoginForm = () => {
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Enter your password"
                                 disabled={isLoading}
+                                containerClass="form-input"
                             />
                             <PasswordToggle
                                 showPassword={showPassword}
                                 onToggle={() => setShowPassword(!showPassword)}
                                 disabled={isLoading}
+
                             />
                         </div>
                     </div>

@@ -28,9 +28,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, className 
                             onItemClick={(item) => {
                                 if (item.onClick && typeof item.onClick === "function") {
                                     console.log("Executing item.onClick for:", item.label);
-                                    // Handle both signatures
                                     if (item.onClick.length === 0) {
-                                        item.onClick(item);
+                                        item.onClick();
                                     } else {
                                         item.onClick(item);
                                     }

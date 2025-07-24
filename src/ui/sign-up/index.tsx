@@ -71,6 +71,7 @@ const SignupForm = () => {
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
                             placeholder="Full Name"
+                            containerClass="form-input"
                         />
                     </div>
                     <div className="form-group">
@@ -81,6 +82,7 @@ const SignupForm = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter email"
+                            containerClass="form-input"
                         />
                     </div>
                     <div className="form-group">
@@ -93,6 +95,7 @@ const SignupForm = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Password"
+                                containerClass="form-input"
                             />
                             <PasswordToggle
                                 showPassword={showPassword}
@@ -111,6 +114,7 @@ const SignupForm = () => {
                                 value={passwordConfirm}
                                 onChange={(e) => setPasswordConfirm(e.target.value)}
                                 placeholder="Confirm Password"
+                                containerClass="form-input"
                             />
                             <PasswordToggle
                                 showPassword={showPasswordConfirm}

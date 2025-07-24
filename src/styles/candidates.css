@@ -1,0 +1,272 @@
+@import '../styles/global.css';
+
+.candidate-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0;
+}
+
+.candidate-header--search {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.add-btn,
+.add-btn:focus {
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 40px;
+    border-radius: 50px;
+}
+
+.candidate-table--header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
+    gap: 8px;
+    padding: 12px;
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.candidate-table--body {
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: var(--color-black);
+}
+
+
+.candidate-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.candidate-action--btn {
+    position: relative;
+    text-align: center;
+    /* cursor: pointer; */
+}
+
+.candidate-act--container {
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-60%, 15%);
+    width: 193px;
+    border-radius: 8px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--color-white);
+    box-shadow: 0 4px 10.1px #12121233;
+}
+
+.candidate-act {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    padding: 8px 20px;
+}
+
+.candidate-table--wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px #12121233;
+}
+
+@media (max-width: 768px) {
+
+    .candidate-table--header,
+    .candidate-table--body {
+        min-width: 900px;
+    }
+
+    .candidate-table--body {
+        overflow-x: auto;
+    }
+}
+
+.no-candidate {
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-dark-grey);
+}
+
+
+/* Candidate Add Form */
+
+/* Form Field Wrapper */
+.form-field {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Input Field */
+.form-input {
+    width: 100%;
+    padding: 18px 16px 10px;
+    font-size: 16px;
+    border-radius: 12px;
+    outline: none;
+    background-color: white;
+}
+
+.form-input,
+.form-input:hover,
+.form-input:focus {
+    border: 1.5px solid var(--color-violet);
+
+}
+
+/* Floating Label */
+.candidate-form-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: var(--color-violet);
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    z-index: 999;
+}
+
+/* Float when focused or filled */
+.form-input:focus+.candidate-form-label,
+.form-input:not(:placeholder-shown):valid+.candidate-form-label {
+    top: -8px;
+    font-size: 12px;
+    background-color: white;
+    padding: 0 4px;
+}
+
+/* Optional asterisk */
+.candidate-form-label span {
+    color: red;
+}
+
+/* In candidates.css or a relevant CSS file */
+.form-input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    /* Match other inputs */
+}
+
+.form-input-wrapper input[type="file"] {
+    width: 100%;
+    padding: 18px 16px 10px;
+    font-size: 16px;
+    border-radius: 12px;
+    outline: none;
+    background-color: white;
+    border: 1.5px solid var(--color-violet);
+}
+
+.form-input-wrapper input[type="file"]:focus+.candidate-form-label,
+.form-input-wrapper input[type="file"]:not(:placeholder-shown):valid+.candidate-form-label {
+    top: -8px;
+    font-size: 12px;
+    background-color: white;
+    padding: 0 4px;
+}
+
+.form-input-wrapper .candidate-form-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: var(--color-violet);
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    z-index: 999;
+}
+
+/* Candidate Form Layout */
+.candidate-form-container {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px #00000026;
+    padding-bottom: 20px;
+    z-index: 999;
+}
+
+/* Form Header */
+.candidate-form-header {
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.close-form {
+    cursor: pointer;
+}
+
+/* Form Body Grid */
+.candidate-form-body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Footer */
+.form-footer {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 10px;
+    color: var(--color-grey-dark);
+}
+
+button.save-btn {
+    background-color: var(--color-violet);
+    color: white;
+    border: none;
+    padding: 10px 32px;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px auto 0;
+    display: block;
+}
+
+.form-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #999999b7;
+    z-index: 997;
+}
