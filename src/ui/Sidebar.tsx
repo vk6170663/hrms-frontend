@@ -1,5 +1,5 @@
 import type React from "react";
-import type { SidebarProps } from "../types/sidebar";
+import type { NavItemType, SidebarProps } from "../types/sidebar";
 import SidebarSearch from "./SidebarSearch";
 import { useSidebar } from "../context/sidebar-context";
 import { NavSection } from "./NavSection";
@@ -26,13 +26,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, className 
                             key={section.id}
                             section={section}
                             onItemClick={(item) => {
-                                if (item.onClick && typeof item.onClick === "function") {
+                                if (item.onClick) {
                                     console.log("Executing item.onClick for:", item.label);
-                                    if (item.onClick.length === 0) {
-                                        item.onClick();
+                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    if (item.onClick.length === 0 || !(item.onClick as any).length) {
+                                        // Treat as no-argument function
+                                        (item.onClick as () => void)();
                                     } else {
-                                        item.onClick(item);
+                                        // Treat as function with item argument
+                                        (item.onClick as (item: NavItemType) => void)(item);
                                     }
+                                    closeSidebar(); // Close sidebar after click
                                 }
                             }}
                         />
