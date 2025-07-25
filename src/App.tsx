@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthStore } from './store/auth';
 import ProtectedRoute from './ui/ProtectedRoute';
 import Login from './pages/login';
@@ -13,6 +13,7 @@ import AppLayout from './ui/AppLayout';
 import ErrorBoundary from './ui/ErrorBoundary';
 import CandidatesPage from './pages/candidates';
 import { Toaster } from 'react-hot-toast';
+import Spinner from './ui/Spinner';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,17 +25,25 @@ const queryClient = new QueryClient({
 
 function App() {
   const { initialize, isAuthenticated } = useAuthStore();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    initialize();
+    const initAuth = async () => {
+      await initialize();
+      setIsLoading(false);
+    };
+    initAuth();
   }, [initialize]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Routes>
-          {/* Public Routes */}
           <Route
             path="/login"
             element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
@@ -44,7 +53,6 @@ function App() {
             element={isAuthenticated ? <Navigate to="/" replace /> : <Signup />}
           />
 
-          {/* Protected Routes with Layout */}
           <Route
             path="/"
             element={
@@ -62,7 +70,6 @@ function App() {
             <Route path="leaves" element={<Leaves />} />
           </Route>
 
-          {/* Fallback Route */}
           <Route
             path="*"
             element={<Navigate to={isAuthenticated ? '/candidates' : '/login'} replace />}

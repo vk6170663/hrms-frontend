@@ -1,8 +1,8 @@
+import AttendanceTable from "../../ui/attendance";
+
 const Attendance = () => {
     return (
-        <div>
-
-        </div>
+        <AttendanceTable />
     );
 };
 

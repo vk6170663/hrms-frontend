@@ -4,9 +4,9 @@ import Button from "../button";
 import CandidateActions from "./candidates-actions";
 import { useState, useCallback } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import api from "../../utils/api";
 import { toast } from "react-hot-toast";
 import GenericDropdown from "../GenericDropdown";
+import { updateCandidateStatus } from "../../services/apiCandidates";
 
 type CandidateType = {
     item: Candidate;
@@ -27,14 +27,10 @@ const CandidatesRow: FC<CandidateType> = ({ item, index }) => {
     };
 
     const updateStatusMutation = useMutation({
-        mutationFn: async (newStatus: string) => {
-            const response = await api.patch(`/candidates/${_id}/status`, { status: newStatus });
-            return response.data;
-        },
+        mutationFn: (newStatus: string) => updateCandidateStatus(_id, newStatus),
         onSuccess: (data) => {
-            console.log("Status update response:", data); // Debug log
             toast.success(data.message || "Candidate status updated successfully");
-            queryClient.invalidateQueries({ queryKey: ["candidates"] }); // Invalidate cache to refresh list
+            queryClient.invalidateQueries({ queryKey: ["candidates"] });
         },
         onError: (error: Error) => {
             toast.error(`Failed to update status: ${error.message}`);

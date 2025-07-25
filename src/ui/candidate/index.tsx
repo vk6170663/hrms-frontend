@@ -1,28 +1,19 @@
-import { useState } from "react";
 import "../../styles/candidates.css";
 import CandidatesTableHeader from "./candidates-table-header";
 import CandidatesTableBody from "./candidates-table-body";
 import CandidatesHeader from "./candidates-header";
 import AddCandidateForm from "./add-candidate-form";
 import { useQuery } from "@tanstack/react-query";
-import api from "../../utils/api";
+import { getCandidates } from "../../services/apiCandidates";
+import { useState } from "react";
 
 const CandidatesTable = () => {
     const [isFormOpen, setIsFormOpen] = useState(false);
-    const [filters, setFilters] = useState({ status: "All", department: "All", search: "" });
+    const [filters, setFilters] = useState({ status: "Position", department: "Department", search: "" });
 
     const { isLoading, data: candidates = [], refetch } = useQuery({
         queryKey: ["candidates", filters],
-        queryFn: async () => {
-            console.log("Fetching candidates with filters:", filters); // Debug log
-            const params = {
-                status: filters.status === "All" ? undefined : filters.status,
-                department: filters.department === "All" ? undefined : filters.department,
-                search: filters.search || undefined,
-            };
-            const response = await api.get("/candidates", { params });
-            return response.data.data;
-        },
+        queryFn: () => getCandidates(filters),
         refetchOnWindowFocus: true,
     });
 
@@ -34,8 +25,12 @@ const CandidatesTable = () => {
         setIsFormOpen(false);
     };
 
-    const handleFilterChange = (newFilters: { status: string; department: string; search: string; }) => {
-        setFilters(newFilters);
+    const handleFilterChange = (newFilters: { status?: string; department?: string; search: string; }) => {
+        setFilters({
+            status: newFilters.status || "Position",
+            department: newFilters.department || "Department",
+            search: newFilters.search,
+        });
         refetch();
     };
 

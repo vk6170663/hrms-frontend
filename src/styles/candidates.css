@@ -23,9 +23,9 @@
     border-radius: 50px;
 }
 
-.candidate-table--header {
+.candidate-table--header,
+.attendance-table--header {
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
     gap: 8px;
     padding: 12px;
     background-color: var(--color-violet);
@@ -33,6 +33,14 @@
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0;
+}
+
+.candidate-table--header {
+    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
+}
+
+.attendance-table--header {
+    grid-template-columns: 1fr 3fr 2fr 2fr 4fr 3fr 1fr;
 }
 
 .candidate-table--body {
@@ -47,11 +55,19 @@
 }
 
 
-.candidate-row {
+.candidate-row,
+.attendance-row {
     display: grid;
-    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
     align-items: center;
     gap: 8px;
+}
+
+.candidate-row {
+    grid-template-columns: 1fr 2fr 3fr 2fr 2fr 2fr 2fr 1fr;
+}
+
+.attendance-row {
+    grid-template-columns: 1fr 3fr 2fr 2fr 4fr 3fr 1fr;
 }
 
 .candidate-action--btn {
@@ -60,12 +76,12 @@
     /* cursor: pointer; */
 }
 
-.candidate-act--container {
+.candidate-act--container,
+.employee-act--container {
     position: absolute;
     top: 50%;
     left: -50%;
     transform: translate(-60%, 15%);
-    width: 193px;
     border-radius: 8px;
     padding: 8px;
     display: flex;
@@ -75,11 +91,21 @@
     box-shadow: 0 4px 10.1px #12121233;
 }
 
+.candidate-act--container {
+    width: 193px;
+}
+
+.employee-act--container {
+    width: 123px;
+
+}
+
 .candidate-act {
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 0;
     padding: 8px 20px;
+    text-align: left;
 }
 
 .candidate-table--wrapper {
@@ -108,6 +134,9 @@
     color: var(--color-dark-grey);
 }
 
+.employee-img {
+    border-radius: 50%;
+}
 
 /* Candidate Add Form */
 
@@ -168,6 +197,82 @@
     margin-bottom: 20px;
     /* Match other inputs */
 }
+
+.hidden-file-input {
+    display: none;
+}
+
+.custom-file-input {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 48px;
+    border: 1px solid var(--color-violet);
+    border-radius: 12px;
+    padding: 18px 16px 10px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.custom-file-input:hover {
+    border-color: var(--color-violet);
+}
+
+.custom-file-label {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-violet);
+    transition: 0.2s ease all;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.custom-file-label span {
+    color: red;
+}
+
+.custom-file-input.has-file .custom-file-label {
+    top: -8px;
+    font-size: 12px;
+    background-color: white;
+    padding: 0 4px;
+}
+
+.file-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: var(--color-black);
+}
+
+.file-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove-file {
+    color: var(--color-red);
+    margin-left: 12px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+}
+
+.upload-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    fill: var(--color-violet);
+}
+
 
 .form-input-wrapper input[type="file"] {
     width: 100%;
@@ -249,7 +354,7 @@
     color: var(--color-grey-dark);
 }
 
-button.save-btn {
+.save-btn {
     background-color: var(--color-violet);
     color: white;
     border: none;
@@ -269,4 +374,15 @@ button.save-btn {
     width: 100%;
     background-color: #999999b7;
     z-index: 997;
+}
+
+.form-disabled--btn {
+    background-color: var(--color-grey);
+    color: var(--color-white);
+    cursor: not-allowed;
+}
+
+.form-active--btn {
+    color: var(--color-white);
+    background-color: var(--color-violet);
 }

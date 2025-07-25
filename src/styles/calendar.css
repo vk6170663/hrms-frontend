@@ -1,0 +1,77 @@
+@import '../styles/global.css';
+
+.rdp {
+    --rdp-cell-size: 42px;
+    --rdp-accent-color: var(--color-violet);
+    --rdp-background-color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.rdp-months {
+    border-radius: 16px;
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.221);
+    padding: 4px;
+}
+
+
+
+/* Header (Month & Year) */
+.rdp-caption_label {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-black);
+}
+
+/* Weekday Labels */
+.rdp-head_cell {
+    font-weight: 500;
+    color: var(--color-black);
+}
+
+/* Days */
+.rdp-day {
+    border-radius: 50%;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Selected Day */
+.rdp-day_selected {
+    /* background-color: var(--color-violet); */
+    color: var(--color-violet);
+}
+
+/* Today’s Date (Not selected) */
+.rdp-day_today:not(.rdp-day_selected) {
+    color: var(--color-violet);
+    font-weight: bold;
+}
+
+/* Hover */
+.rdp-day:hover {
+    color: var(--color-white);
+    background-color: var(--color-violet);
+}
+
+/* Navigation Arrows */
+.rdp-nav_button {
+    color: var(--color-violet);
+    border-radius: 6px;
+    padding: 4px;
+}
+
+.rdp-chevron {
+    fill: var(--color-violet) !important;
+}
+
+.rdp-nav_button:hover {
+    background-color: var(--color-white);
+}
+
+/* Remove dropdown style */
+.rdp-caption_dropdowns {
+    display: none;
+}

@@ -1,8 +1,9 @@
+import '../../styles/candidates.css';
+import EmployeesTable from '../../ui/employees';
+
 const Employees = () => {
     return (
-        <div>
-            Employees
-        </div>
+        <EmployeesTable />
     );
 };
 

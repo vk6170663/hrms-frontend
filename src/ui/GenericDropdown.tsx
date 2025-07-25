@@ -6,7 +6,7 @@ interface Option {
 }
 
 interface GenericDropdownProps {
-    value?: string;
+    value?: string | undefined;
     onChange: (value: string) => void;
     options: Option[];
     isFilter?: boolean;
@@ -14,7 +14,7 @@ interface GenericDropdownProps {
     useColors?: boolean;
 }
 
-const GenericDropdown = ({ value = "All", onChange, options, isFilter = false, placeholder, useColors = false }: GenericDropdownProps) => {
+const GenericDropdown = ({ value, onChange, options, isFilter = false, placeholder, useColors = false }: GenericDropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedValue, setSelectedValue] = useState(value);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ const GenericDropdown = ({ value = "All", onChange, options, isFilter = false, p
         [onChange, isFilter]
     );
 
-    const getStatusClass = (status: string) => {
+    const getStatusClass = (status: string | undefined) => {
         if (!useColors) return "dropdown-btn";
         const colorClasses: { [key: string]: string; } = {
             new: "new",
@@ -38,11 +38,19 @@ const GenericDropdown = ({ value = "All", onChange, options, isFilter = false, p
             ongoing: "ongoing",
             selected: "selected",
             rejected: "rejected",
+            present: "present",
+            absent: "absent"
         };
-        return `dropdown-btn ${colorClasses[status.toLowerCase()] || ""}${isOpen ? " active" : ""}`;
+        return status === undefined ? "" : `dropdown-btn ${colorClasses[status.toLowerCase()] || ""}${isOpen ? " active" : ""}`;
     };
 
-    // Handle outside clicks
+    useEffect(() => {
+        if (value !== undefined && value !== selectedValue) {
+            setSelectedValue(value);
+        }
+    }, [value, selectedValue]);
+
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -50,7 +58,6 @@ const GenericDropdown = ({ value = "All", onChange, options, isFilter = false, p
             }
         };
 
-        // Handle ESC key
         const handleEscKey = (event: KeyboardEvent) => {
             if (event.key === "Escape" && isOpen) {
                 setIsOpen(false);
@@ -71,7 +78,7 @@ const GenericDropdown = ({ value = "All", onChange, options, isFilter = false, p
                 className={getStatusClass(selectedValue)}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
-                {selectedValue || placeholder || "Select an option"}
+                {selectedValue || placeholder || "Status"}
                 <span className="arrow">
                     {isOpen ? (
                         <svg

@@ -5,7 +5,7 @@ const FormLeftPanel = () => {
         <div className="form-left-panel">
 
             <div className="dashboard-preview">
-                <img src="../../public/Rectangle 77.png" className="form-left-panel-img" />
+                <img src="/Rectangle 77.png" className="form-left-panel-img" />
             </div>
 
             <div className="panel-content">

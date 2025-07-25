@@ -9,17 +9,17 @@ interface NavItemProps extends NavItemType {
 
 const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, active, ...props }) => {
     const handleClick = (e: React.MouseEvent) => {
-        if (e && onClick) {
+        if (onClick) {
             e.preventDefault();
             e.stopPropagation();
             onClick({ id, label, icon, href, onClick, active });
         }
     };
 
-    const buttonOnClick = () => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        handleClick(new MouseEvent("click") as any);
-    };
+    // const buttonOnClick = () => {
+    //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    //     handleClick(new MouseEvent("click") as any);
+    // };
 
     return (
         <li className="nav-item">
@@ -28,13 +28,13 @@ const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, activ
                     <Link
                         to={href || "#"}
                         className={`nav-link ${active ? "active" : ""}`}
-                        onClick={handleClick}
+                        // onClick={handleClick}
                         {...props}
                     >
                         {icon && <span className="nav-icon">{icon}</span>}
                         <span className="nav-label">{label}</span>
                     </Link> :
-                    <Button buttonType="default-md" containerClass={`nav-link ${active ? "active" : ""}`} onClick={buttonOnClick}>
+                    <Button buttonType="default-md" containerClass={`nav-link ${active ? "active" : ""}`} onClick={handleClick}>
                         {icon && <span className="nav-icon">{icon}</span>}
                         <span className="nav-label">{label}</span>
                     </Button>

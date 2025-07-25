@@ -182,7 +182,8 @@
     color: var(--color-yellow);
 }
 
-.ongoing {
+.ongoing,
+.present {
     color: var(--color-green);
 }
 
@@ -190,7 +191,8 @@
     color: var(--color-violet);
 }
 
-.rejected {
+.rejected,
+.absent {
     color: var(--color-red);
 
 }

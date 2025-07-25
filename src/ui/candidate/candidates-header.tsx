@@ -5,32 +5,32 @@ import GenericDropdown from "../GenericDropdown";
 
 interface CandidatesHeaderProps {
     onAddCandidateClick: () => void;
-    onFilterChange: (filters: { status: string; department: string; search: string; }) => void;
+    onFilterChange: (filters: { status?: string; department?: string; search: string; }) => void;
 }
 
 const CandidatesHeader = ({ onAddCandidateClick, onFilterChange }: CandidatesHeaderProps) => {
-    const [filterStatus, setFilterStatus] = useState("All");
-    const [filterDepartment, setFilterDepartment] = useState("All");
+    const [filterStatus, setFilterStatus] = useState("Position");
+    const [filterDepartment, setFilterDepartment] = useState("Department");
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleStatusChange = (value: string) => {
         setFilterStatus(value);
-        onFilterChange({ status: value, department: filterDepartment, search: searchQuery });
+        onFilterChange({ status: value === "Position" ? undefined : value, department: filterDepartment === "Department" ? undefined : filterDepartment, search: searchQuery });
     };
 
     const handleDepartmentChange = (value: string) => {
         setFilterDepartment(value);
-        onFilterChange({ status: filterStatus, department: value, search: searchQuery });
+        onFilterChange({ status: filterStatus === "Position" ? undefined : filterStatus, department: value === "Department" ? undefined : value, search: searchQuery });
     };
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setSearchQuery(value);
-        onFilterChange({ status: filterStatus, department: filterDepartment, search: value });
+        onFilterChange({ status: filterStatus === "Position" ? undefined : filterStatus, department: filterDepartment === "Department" ? undefined : filterDepartment, search: value });
     };
 
     const statusOptions = [
-        { label: "All", value: "All" },
+        { label: "Position", value: "Position" },
         { label: "New", value: "New" },
         { label: "Scheduled", value: "Scheduled" },
         { label: "Ongoing", value: "Ongoing" },
@@ -39,7 +39,7 @@ const CandidatesHeader = ({ onAddCandidateClick, onFilterChange }: CandidatesHea
     ];
 
     const departmentOptions = [
-        { label: "All", value: "All" },
+        { label: "Department", value: "Department" },
         { label: "Frontend", value: "Frontend" },
         { label: "Backend", value: "Backend" },
         { label: "DevOps", value: "DevOps" },
@@ -55,7 +55,7 @@ const CandidatesHeader = ({ onAddCandidateClick, onFilterChange }: CandidatesHea
                     options={statusOptions}
                     isFilter
                     placeholder="Select Status"
-                    useColors={false} // Disable coloring for filtering
+                    useColors={false}
                 />
                 <GenericDropdown
                     value={filterDepartment}
@@ -63,7 +63,7 @@ const CandidatesHeader = ({ onAddCandidateClick, onFilterChange }: CandidatesHea
                     options={departmentOptions}
                     isFilter
                     placeholder="Select Department"
-                    useColors={false} // Disable coloring for filtering
+                    useColors={false}
                 />
             </div>
             <div className="candidate-header--search">
