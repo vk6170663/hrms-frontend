@@ -34,7 +34,7 @@ const LeavesTable: React.FC = () => {
                     </div>
                     <LeavesTableBody isLoading={isLoading} leaves={leaves} />
                 </div>
-                <div className='leaves-calendar-container'>dsfgsd</div>
+                <div className='leaves-calendar-container'></div>
             </div>
         </>
 
