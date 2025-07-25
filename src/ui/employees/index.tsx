@@ -22,10 +22,10 @@ const EmployeesTable = () => {
         refetchOnWindowFocus: true,
     });
 
-    const handleFilterChange = (newFilters: { position?: string; search: string; }) => {
-        setFilters(newFilters);
-        refetch();
-    };
+    // const handleFilterChange = (newFilters: { position?: string; search: string; }) => {
+    //     setFilters(newFilters);
+    //     refetch();
+    // };
 
     const handleEditClick = (employee: Employee) => {
         setSelectedEmployee(employee);
@@ -44,7 +44,7 @@ const EmployeesTable = () => {
     return (
         <>
             <div className="employees-table-container">
-                <EmployeeFilter onFilterChange={handleFilterChange} />
+                <EmployeeFilter onFilterChange={setFilters} />
                 <div className="candidate-table--wrapper">
                     <EmployeesTableHeader />
                     <EmployeesTableBody

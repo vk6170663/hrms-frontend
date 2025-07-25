@@ -6,18 +6,24 @@ import type { Attendance } from '../../types/Attendance';
 interface Props {
     isLoading: boolean;
     attendance: Attendance[];
+    filterStatus?: string;
 }
 
-const AttendanceTableBody: FC<Props> = ({ isLoading, attendance }) => {
+const AttendanceTableBody: FC<Props> = ({ isLoading, attendance, filterStatus }) => {
     if (isLoading) return <Spinner />;
 
-    if (attendance.length === 0)
-        return <div className="no-candidate">No Attendance Records Found!</div>;
+    const filteredAttendance = filterStatus && filterStatus !== 'Status'
+        ? attendance.filter(record => record.status === filterStatus)
+        : attendance.filter(record => record.status === 'Present' || record.status === 'Absent');
+
+    if (!filteredAttendance.length) {
+        return <div className="empty-state">No attendance records found.</div>;
+    }
 
     return (
         <div className="candidate-table--body">
-            {attendance.map((item) => (
-                <AttendanceRow key={item._id} item={item} />
+            {filteredAttendance.map((item) => (
+                <AttendanceRow key={item.employee._id} item={item} />
             ))}
         </div>
     );

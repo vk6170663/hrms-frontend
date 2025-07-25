@@ -13,7 +13,7 @@ interface Props {
 const AttendanceRow: FC<Props> = ({ item }) => {
     const { employee, status, tasks, _id } = item;
     const employeeData = employee;
-    const profileImg = employeeData.image || '/default.jpg';
+    const profileImg = employeeData.profile || '/default.jpg';
     const queryClient = useQueryClient();
 
     // Mutation for updating existing attendance

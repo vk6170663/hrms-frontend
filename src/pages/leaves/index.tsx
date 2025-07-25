@@ -1,8 +1,9 @@
+import "../../styles/leaves.css";
+import LeavesTable from "../../ui/leaves";
+
 const Leaves = () => {
     return (
-        <div>
-
-        </div>
+        <LeavesTable />
     );
 };
 

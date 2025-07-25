@@ -3,7 +3,7 @@ export interface NavItemType {
     label: string;
     icon?: React.ReactNode;
     href?: string;
-    onClick?: (() => void) | ((item: NavItemType) => void);
+    onClick?: () => void;
     active?: boolean;
 }
 

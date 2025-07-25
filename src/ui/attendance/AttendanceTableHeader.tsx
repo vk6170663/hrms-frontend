@@ -32,7 +32,7 @@ const AttendanceTableHeader: React.FC<Props> = ({ onFilterChange }) => {
                     { label: 'Absent', value: 'Absent' },
                 ]}
                 isFilter
-                useColors={true}
+                useColors={false}
             />
             <div className="sidebar-search">
                 <div className="search-container flex items-center">

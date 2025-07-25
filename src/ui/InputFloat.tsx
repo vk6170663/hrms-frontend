@@ -4,9 +4,10 @@ type InputProps = {
     type?: string;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
-const InputFloat = ({ label, name, type = "text", value, onChange }: InputProps) => {
+const InputFloat = ({ label, name, type = "text", value, onChange, onClick }: InputProps) => {
     return (
         <div className="form-field">
             <input
@@ -17,6 +18,7 @@ const InputFloat = ({ label, name, type = "text", value, onChange }: InputProps)
                 value={value}
                 onChange={onChange}
                 className="form-input"
+                onClick={onClick}
             />
             <label htmlFor={name} className="candidate-form-label">{label}<span>*</span></label>
         </div>

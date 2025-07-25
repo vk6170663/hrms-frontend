@@ -174,7 +174,7 @@
     font-weight: 500;
     pointer-events: none;
     transition: 0.2s ease all;
-    z-index: 999;
+    z-index: 996;
 }
 
 /* Float when focused or filled */

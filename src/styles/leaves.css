@@ -1,0 +1,103 @@
+@import "./global.css";
+
+.leave-filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.leave-search-container {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.leaves--outer-container {
+    display: flex;
+    gap: 18px;
+    width: 100%;
+}
+
+.leaves-container {
+    max-width: 712px;
+    border-radius: 20px;
+    flex: 1;
+    border: 1px solid var(--color-grey);
+    overflow-x: hidden;
+    box-shadow: 0 0 0 #E5E5E5;
+}
+
+.applied-leaves-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    font-size: 16px;
+    font-weight: normal;
+    padding: 16px 12px;
+}
+
+.leaves-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr 3fr 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.applied-leaves-body {
+    padding: 8px;
+    min-height: 100px;
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.leaves-row {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 2fr 3fr 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.leaves-calendar-container {
+    max-width: 388px;
+}
+
+.leave-form-input-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.leave-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 999;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.leave-dropdown-item {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.leave-dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.leave-remove-field {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-80%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #666;
+}

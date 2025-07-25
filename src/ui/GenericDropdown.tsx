@@ -39,7 +39,9 @@ const GenericDropdown = ({ value, onChange, options, isFilter = false, placehold
             selected: "selected",
             rejected: "rejected",
             present: "present",
-            absent: "absent"
+            absent: "absent",
+            pending: "pending",
+            approved: "approved",
         };
         return status === undefined ? "" : `dropdown-btn ${colorClasses[status.toLowerCase()] || ""}${isOpen ? " active" : ""}`;
     };

@@ -41,7 +41,6 @@ const AppLayoutContent = () => {
     };
 
     const handleLogoutClick = () => {
-        console.log("Logout button clicked");
         setLogoutShow(true);
     };
 

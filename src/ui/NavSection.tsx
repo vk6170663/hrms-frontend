@@ -16,7 +16,7 @@ export const NavSection: React.FC<NavSectionProps> = ({ section, onItemClick }) 
                     <NavItem
                         key={item.id}
                         {...item}
-                        onClick={onItemClick ? (itemProp) => onItemClick(itemProp) : undefined}
+                        onClick={onItemClick ? () => onItemClick(item) : undefined}
                     />
                 ))}
             </ul>

@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 import Button from "./button";
 
 interface NavItemProps extends NavItemType {
-    onClick?: (item: NavItemType) => void;
+    onClick?: () => void;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ id, label, icon, href, onClick, active, ...props }) => {
+const NavItem: React.FC<NavItemProps> = ({ label, icon, href, onClick, active, ...props }) => {
     const handleClick = (e: React.MouseEvent) => {
         if (onClick) {
             e.preventDefault();
             e.stopPropagation();
-            onClick({ id, label, icon, href, onClick, active });
+            onClick();
         }
     };
 

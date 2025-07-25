@@ -26,10 +26,13 @@ export const Sidebar: React.FC<SidebarProps> = ({ sections, onSearch, className 
                             key={section.id}
                             section={section}
                             onItemClick={(item) => {
-                                if (item.onClick) {
-                                    item.onClick(item);
+                                if (item.id === "logout") {
+                                    if (item.onClick) {
+                                        item.onClick();
+                                    }
+                                } else if (item.href) {
+                                    closeSidebar();
                                 }
-                                closeSidebar(); // Close sidebar after click
                             }}
                         />
                     ))}

@@ -178,12 +178,14 @@
 }
 
 /* Status-specific styles */
-.scheduled {
+.scheduled,
+.pending {
     color: var(--color-yellow);
 }
 
 .ongoing,
-.present {
+.present,
+.approved {
     color: var(--color-green);
 }
 

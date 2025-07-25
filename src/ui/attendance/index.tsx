@@ -15,7 +15,7 @@ const AttendanceTable = () => {
     const { isLoading, data: attendance = [] } = useQuery({
         queryKey: ['attendance', filters],
         queryFn: () => getTodayAttendanceMerged(filters),
-        refetchOnWindowFocus: false,
+        refetchOnWindowFocus: true,
     });
 
     return (
@@ -31,7 +31,7 @@ const AttendanceTable = () => {
                     <div>Status</div>
                     <div>Action</div>
                 </div>
-                <AttendanceTableBody isLoading={isLoading} attendance={attendance} />
+                <AttendanceTableBody isLoading={isLoading} attendance={attendance} filterStatus={filters.status} />
             </div>
         </div>
     );
